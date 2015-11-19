@@ -234,12 +234,15 @@
     // TIP: There's a very clever way to re-use every() here.
     iterator = ( iterator || _.identity );
 
+    //Due to using the _.every logic inversly, the negated value is therefore returned
     return !_.every(collection, function(x){
 
+      //if iterator(x) exists (is true), it acts as if it was a not-matching value in _.every
       if ( !!iterator(x) ){
         return false;
       }
 
+      //if iterator(x) doesn't appear (is false), it acts as if it was a matching value in _.every
       return true;
 
     });
